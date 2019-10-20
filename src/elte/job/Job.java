@@ -4,10 +4,10 @@ import elte.person.Person;
 
 public abstract class Job {
     boolean complete = false;
-    private final String name;
+    final Integer id;
 
-    Job(String name) {
-        this.name = name;
+    Job(Integer id) {
+        this.id = id;
     }
 
     public abstract void complete(Person person);
@@ -19,6 +19,6 @@ public abstract class Job {
 
     @Override
     public String toString() {
-        return name;
+        return String.valueOf(id);
     }
 }

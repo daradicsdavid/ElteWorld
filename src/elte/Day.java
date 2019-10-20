@@ -34,6 +34,13 @@ class Day {
             }
         }
 
+        GardeningJob search = new GardeningJob(1);
+        for (Job job : jobs) {
+            if (job.equals(search)) {
+                logger.log("Found job " + job + "!");
+            }
+        }
+
         if (jobs.stream().anyMatch(job -> !job.isComplete())) {
             throw new Error("Jobs are not completed!");
         }

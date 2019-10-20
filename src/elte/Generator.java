@@ -17,10 +17,10 @@ class Generator {
 
     static List<Job> generateJobs(Integer gardeningJobs, Integer craftingJobs) {
         Stream<GardeningJob> gardeningJobStream = IntStream.range(0, gardeningJobs)
-                .mapToObj(i -> new GardeningJob(String.valueOf(i)));
+                .mapToObj(GardeningJob::new);
 
         Stream<CraftingJob> craftingJobStream = IntStream.range(0, craftingJobs)
-                .mapToObj(i -> new CraftingJob(String.valueOf(i)));
+                .mapToObj(CraftingJob::new);
         List<Job> jobs = Stream.concat(gardeningJobStream, craftingJobStream).collect(Collectors.toList());
         Collections.shuffle(jobs);
         return jobs;

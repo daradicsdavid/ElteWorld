@@ -3,9 +3,11 @@ package elte.job;
 import elte.person.Gardener;
 import elte.person.Person;
 
+import java.util.Objects;
+
 public class GardeningJob extends Job {
-    public GardeningJob(String name) {
-        super(name);
+    public GardeningJob(Integer id) {
+        super(id);
     }
 
     @Override
@@ -20,5 +22,13 @@ public class GardeningJob extends Job {
     @Override
     public String toString() {
         return "gardening job " + super.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GardeningJob)) return false;
+        GardeningJob job = (GardeningJob) o;
+        return Objects.equals(id, job.id);
     }
 }
