@@ -2,7 +2,7 @@ Exercise:
 ```
 git checkout exercise
 ```
-Solved exercise:
+Exercise solved:
 ```
 git checkout solved
 ```
