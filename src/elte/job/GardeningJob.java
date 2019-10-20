@@ -23,12 +23,4 @@ public class GardeningJob extends Job {
     public String toString() {
         return "gardening job " + super.toString();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof GardeningJob)) return false;
-        GardeningJob job = (GardeningJob) o;
-        return Objects.equals(id, job.id);
-    }
 }

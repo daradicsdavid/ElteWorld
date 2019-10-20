@@ -22,42 +22,20 @@ class Day {
 
     final void complete() {
         for (Job job : jobs) {
-            Person person = findPersonForJob(job);
-            job.complete(person);
-            person.setWorking();
-            logger.log(person + " completed " + job + "!");
+            //EXERCISE: Find a person who is not working and can do the job.
+            // Then after the person finished the job, log: person finished job! (use toString())
+            // Gardener -> GardeningJob
+            // Crafter -> CraftingJob
         }
 
-        for (Person person : people) {
-            if (!person.isWorking()) {
-                logger.log(person + " did not work!");
-            }
-        }
+        //EXERCISE: Log every person who did not work: person did not work! (use toString())
 
         GardeningJob search = new GardeningJob(1);
-        for (Job job : jobs) {
-            if (job.equals(search)) {
-                logger.log("Found job " + job + "!");
-            }
-        }
+        //EXERCISE: Find job that equals search in the job list (override and use equals())
 
         if (jobs.stream().anyMatch(job -> !job.isComplete())) {
             throw new Error("Jobs are not completed!");
         }
-    }
-
-    private Person findPersonForJob(Job job) {
-        for (Person person : people) {
-            if (!person.isWorking() && canDoJob(person, job)) {
-                return person;
-            }
-        }
-        throw new Error("Job cannot be completed!");
-    }
-
-    private static boolean canDoJob(Person person, Job job) {
-        return (person instanceof Gardener && job instanceof GardeningJob)
-                || (person instanceof Crafter && job instanceof CraftingJob);
     }
 
 
