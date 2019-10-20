@@ -7,6 +7,7 @@ import elte.job.Job;
 import elte.person.Crafter;
 import elte.person.Gardener;
 import elte.person.Person;
+
 import java.util.List;
 
 class Day {
@@ -24,6 +25,7 @@ class Day {
             Person person = findPersonForJob(job);
             job.complete(person);
             person.setWorking();
+            logger.log(person + " completed " + job + "!");
         }
 
         for (Person person : people) {
