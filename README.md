@@ -1,8 +1,8 @@
-First exercise:
+Exercise:
 ```
 git checkout exercise
 ```
-First exercise solved:
+Exercise solved:
 ```
 git checkout solved
 ```
