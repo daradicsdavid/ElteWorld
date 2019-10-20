@@ -1,9 +1,12 @@
 package elte;
 
 import elte.io.FileLogger;
+import elte.job.CraftingJob;
+import elte.job.GardeningJob;
 import elte.job.Job;
+import elte.person.Crafter;
+import elte.person.Gardener;
 import elte.person.Person;
-
 import java.util.List;
 
 class Day {
@@ -18,14 +21,34 @@ class Day {
 
     final void complete() {
         for (Job job : jobs) {
-            //EXERCISE: Find a person who can complete the job and make them do it. (Gardener->GardeningJob, Crafter->CraftingJob)
-            //EXERCISE: Log completed job and the person who completed it. example: 'Joe completed gardening job weeding'
+            Person person = findPersonForJob(job);
+            job.complete(person);
+            person.setWorking();
         }
-        //EXERCISE: Log every person who did not work on any job
+
+        for (Person person : people) {
+            if (!person.isWorking()) {
+                logger.log(person + " did not work!");
+            }
+        }
 
         if (jobs.stream().anyMatch(job -> !job.isComplete())) {
             throw new Error("Jobs are not completed!");
         }
+    }
+
+    private Person findPersonForJob(Job job) {
+        for (Person person : people) {
+            if (!person.isWorking() && canDoJob(person, job)) {
+                return person;
+            }
+        }
+        throw new Error("Job cannot be completed!");
+    }
+
+    private static boolean canDoJob(Person person, Job job) {
+        return (person instanceof Gardener && job instanceof GardeningJob)
+                || (person instanceof Crafter && job instanceof CraftingJob);
     }
 
 
