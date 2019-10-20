@@ -1,8 +1,8 @@
-First exercise:
+Exercise:
 ```
-git checkout oop_exercise
+git checkout exercise
 ```
-First exercise solved:
+Solved exercise:
 ```
-git checkout oop_exercise_solved
+git checkout solved
 ```
